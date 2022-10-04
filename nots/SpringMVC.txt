@@ -1,0 +1,115 @@
+SpringMVC
+    ·SpringMVC简介
+        ·概述：
+            ·SpringMVC技术与Servlet技术功能等同，均属于web层开发技术
+            ·SpringMVC是一种基于JAVA实现MVC模型的轻量级web框架
+            ·优点：
+                ·使用简单，开发便捷(相比于Servlet)
+                ·灵活性强
+
+        ·SpringMVC入门案例
+            ①：使用SpringMVC技术需要先导入SpringMVC坐标与Servlet坐标
+                <!--导入Springmvc与servlet-->
+                <dependency>
+                  <groupId>javax.servlet</groupId>
+                  <artifactId>javax.servlet-api</artifactId>
+                  <version>3.1.0</version>
+                  <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                  <groupId>org.springframework</groupId>
+                  <artifactId>spring-webmvc</artifactId>
+                  <version>5.2.12.RELEASE</version>
+                </dependency>
+            ②：创建SpringMVC控制器类(等同于Servlet功能)
+                @Controller
+                public class UserController {
+                    /**
+                     * 设置当前操作的访问路径
+                     * 设置当前操作的返回值类型
+                     */
+                    @RequestMapping("/save")
+                    @ResponseBody
+                    public String save(){
+                        System.out.println("user save...");
+                        return "{'module':'springmvc'}";
+                    }
+                }
+
+            ③：初始化SpringMVC环境(同Spring环境)，设定SpringMVC加载对应的bean
+                //创建springmvc的配置文件，加载controller对应的bean
+                @Configuration
+                @ComponentScan("com.controller")
+                public class SpringMvcConfig {
+                }
+            ④：初始化Servlet容器，加载SrpingMVC环境，并设置SpringMVC技术处理的请求
+                public class ServletContainer extends AbstractDispatcherServletInitializer {
+                    @Override
+                    protected WebApplicationContext createServletApplicationContext() {
+                        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+                        ctx.register(SpringMvcConfig.class);
+                        return ctx;
+                    }
+
+                    @Override
+                    protected String[] getServletMappings() {
+                        return new String[]{"/"};
+                    }
+
+                    @Override
+                    protected WebApplicationContext createRootApplicationContext() {
+                        return null;
+                    }
+                }
+
+            入门案例：
+                ·新注解：
+                    ·名称：@Controller
+                    ·类型：类注解
+                    ·位置：SpringMVC控制器类定义上方
+                    ·作用：设定SpringMVC的核心控制器bean
+                ·SpringMVC入门程序开发总结(1+N)
+                    ·一次性工作
+                        ·创建工程，设置服务器，加载工程
+                        ·导入坐标
+                        ·创建web容器启动类，加载SpringMVC配置，并设置SpringMVC请求拦截路径
+                        ·SpringMVC核心配置类(设置配置类，扫描controller包，加载Controller控制器bean)
+                    ·多次工作
+                        ·定义处理请求的控制器类
+                        ·定义处理请求的控制器方法，并配置映射路径(@RequestMapping)与返回json数据(@ResponseBody)
+                ·工作流程分析：
+                    ·启动服务器初始化过程
+                        1·服务器启动，执行ServletContainersInitConfig类，初始化web容器
+                        2·执行createServletApplicationContext方法，创建了WebApplicationContext对象
+                        3·加载SpringMvcConfig
+                        4·执行@ComponentScan加载对应的bean
+                        5·加载UserController，每个@RequestMapping的名称对应一个具体的方法
+                        6·执行getServletMappings方法，定义所有的请求都通过SpringMVC
+                    ·单次请求过程
+                        1·发送请求
+                        2·web容器发现所有请求都经过SpringMVC，将请求交给SpringMVC处理
+                        3·解析请求路径
+                        4·由路径匹配执行对应的方法
+                        5·执行方法
+                        6·检测到由@ResponseBody直接将方法的返回值作为响应体返回给请求方
+        ·Controller加载控制与业务bean加载控制
+            ·SpringMVC相关bean(表现层bean)
+            ·Spring控制的bean
+                ·业务bean(Service)
+                ·功能bean(DataSource等)
+            ·因为功能不同，如何避免Spring错误的加载到SpringMVC的bean？
+                加载Spring控制的bean的时候排除掉SpringMVC控制的bean
+                ·SpringMVC相关bean加载控制
+                    ·SpringMVC加载的bean对应的包均可再controller包内
+                ·Spring相关bean加载控制
+                    ·方式一：Spring加载的bean设定扫描范围为com包，排除掉controller包内的bean
+                    ·方式二：Srping加载的bean设定扫描范围为精准范围，例如service包，dao包
+
+    ·请求与响应
+
+    ·REST风格
+
+    ·SSM整合
+
+    ·拦截器
