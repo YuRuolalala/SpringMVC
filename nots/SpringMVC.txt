@@ -104,9 +104,29 @@ SpringMVC
                     ·SpringMVC加载的bean对应的包均可再controller包内
                 ·Spring相关bean加载控制
                     ·方式一：Spring加载的bean设定扫描范围为com包，排除掉controller包内的bean
+                        · @ComponentScan(value = "com",
+                                     excludeFilters = @ComponentScan.Filter(
+                                             type = FilterType.ANNOTATION,
+                                             classes = Controller.class
+                                     )
+                             )
                     ·方式二：Srping加载的bean设定扫描范围为精准范围，例如service包，dao包
+                        · @ComponentScan({"com.dao","com.service"})
+                    ·方式三：不区分Spring与SpringMVC环境，加载到同一个环境中
+
+        ·PostMan简介
+            ·Postman是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件
+            ·作用：常用于进行接口测试，免除了后端开发自己做测试页面
 
     ·请求与响应
+        ·请求映射路径
+
+        ·请求参数
+
+        ·日期类型参数传递
+
+        ·响应json数据
+
 
     ·REST风格
 

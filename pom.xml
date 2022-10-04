@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>SpringMVC_Demo01_quickstart</module>
+        <module>SpringMVC_Demo02_beanload</module>
     </modules>
 
 
