@@ -201,6 +201,40 @@ SpringMVC
         ·@ResponseBody
             ·作用：设置当前控制器返回值作为响应体
     ·REST风格
+        ·REST(Representational State Transfer)，表现形式状态转换
+            ·传统风格资源描述形式：
+                http://localhost/user/getById?id=1
+            ·REST风格描述形式：
+                http://localhost/user/1
+        ·优点：
+            ·隐藏资源的访问行为，无法通过地址得知资源时何种操作
+            ·书写简化
+        ·注意事项：上述行为是约定方式，约定不是规范，可以打破，所以称REST风格，而不是REST规范
+        描述模块的名称通常使用负数，也就是加s的格式描述，表示此类资源，而非单个资源，例如：users、books
+
+        ·REST风格入门案例
+            @PathVariable用于接收路径参数，使用{参数名称}描述路径参数
+            @RestController 替代@Controller与@ResponseBody两个注解组合功能
+            @GetMapping @PostMapping @PutMapping @DeleteMapping
+
+        ·案例：基于REST页面数据交互
+            ·先做后台功能，开发接口并调通接口
+            ·再做页面异步调用，确认功能可以正常访问
+            ·最后完成页面的数据展示
+            ·补充：放行静态资源访问！！！！
+                @Configuration
+                public class SpringMvcSupport extends WebMvcConfigurationSupport {
+                    //设置静态资源访问过滤，当前类需要设置为配置类，并被扫描加载
+                    @Override
+                    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+                        //当访问/pages/????时候，从/pages目录下查找内容
+                        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+                        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+                        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+                        registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
+
+                    }
+                }
 
     ·SSM整合
 
