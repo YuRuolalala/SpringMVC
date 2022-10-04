@@ -11,6 +11,8 @@
     <modules>
         <module>SpringMVC_Demo01_quickstart</module>
         <module>SpringMVC_Demo02_beanload</module>
+        <module>SpringMVC_Demo03_request_mapping</module>
+        <module>SpringMVC_Demo04_request_param</module>
     </modules>
 
 

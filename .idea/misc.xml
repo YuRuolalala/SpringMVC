@@ -4,6 +4,8 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo01_quickstart" />
     <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo02_beanload" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo03_request_mapping" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo04_request_param" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
