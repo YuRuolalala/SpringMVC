@@ -8,6 +8,7 @@
     <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo04_request_param" />
     <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo05_rest_case" />
     <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo06_SSM" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMVC_Demo07_Result" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

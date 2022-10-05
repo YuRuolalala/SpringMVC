@@ -15,6 +15,7 @@
         <module>SpringMVC_Demo04_request_param</module>
         <module>SpringMVC_Demo05_rest_case</module>
         <module>SpringMVC_Demo06_SSM</module>
+        <module>SpringMVC_Demo07_Result</module>
     </modules>
 
 
