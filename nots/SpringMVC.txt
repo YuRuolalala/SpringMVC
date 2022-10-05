@@ -265,5 +265,29 @@ SpringMVC
 
             ·异常处理器：
                 ·集中的、统一的处理项目中出现的异常
+                @RestControllerAdvice
+                public class ProjectExceptionAdvice {
 
+                    @ExceptionHandler(Exception.class)
+                    public Result doException(Exception e){
+                        System.out.println("异常往哪跑？！");
+                        return new Result(666,null,"出异常了兄弟");
+                    }
+                }
+
+            ·项目异常分类：
+                ·业务异常(BusinessException)
+                    ·规范的用户行为产生的异常
+                    ·不规范的用户行为操作产生的异常
+                        ·发送对应消息传递给用户，提醒规范操作
+                ·系统异常(SystemException)
+                    ·项目运行过程中可预计且无法避免的异常
+                        ·发送固定消息传递给用户，安抚用户
+                        ·发送特定消息给运维人员，提醒维护
+                        ·记录日志
+                ·其他异常(Exception)
+                    ·编程人员未预期到的异常
+                        ·发送固定消息传递给用户，按复用户
+                        ·发送特定消息给编程人员，提醒维护(纳入预期范围内)
+                        ·记录日志
     ·拦截器

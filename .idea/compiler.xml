@@ -11,6 +11,7 @@
         <module name="SpringMVC_Demo05_rest_case" />
         <module name="SpringMVC_Demo04_request_param" />
         <module name="SpringMVC_Demo06_SSM" />
+        <module name="SpringMVC_Demo08_Exception" />
         <module name="SpringMVC_Demo07_Result" />
         <module name="SpringMVC_Demo02_beanload" />
       </profile>
