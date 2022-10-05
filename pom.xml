@@ -17,6 +17,7 @@
         <module>SpringMVC_Demo06_SSM</module>
         <module>SpringMVC_Demo07_Result</module>
         <module>SpringMVC_Demo08_Exception</module>
+        <module>SpringMVC_Demo09_page</module>
     </modules>
 
 
